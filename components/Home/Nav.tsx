@@ -27,12 +27,13 @@ const Nav = () => {
 
           {/* SignIn user */}
           <SignedIn>
-            <UserButton />
+            <UserIcon size={26} cursor={"pointer"} color="black" />
+
           </SignedIn>
 
           {/* Not Signed in */}
           <SignedOut>
-            <UserIcon size={26} cursor={"pointer"} color="black" />
+          <UserButton />
           </SignedOut>
         </div>
       </div>
