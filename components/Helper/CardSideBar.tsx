@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { SheetClose } from "../ui/sheet";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 
 type Props = {
   items: CartItem[];
@@ -23,7 +24,7 @@ const CardSideBar = ({ items }: Props) => {
       {/* If no card */}
       {items.length == 0 && (
         <div className="flex items-center w-full h-[80vh] flex-col justify-center">
-          <img
+          <Image
             src="/images/cart.svg"
             alt="empty_cart"
             width={200}
@@ -43,7 +44,7 @@ const CardSideBar = ({ items }: Props) => {
             >
               {/* Cart Image */}
               <div>
-                <img
+                <Image
                   src={item.image || "/path/to/default/image.jpg"} // Fallback image if item.image is not available
                   alt={item.title || "Default Title"} // Fallback alt text
                   width={60}

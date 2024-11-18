@@ -4,6 +4,7 @@ import { Star, StarIcon } from "lucide-react";
 import React from "react";
 import AddtoCart from "./add-cart";
 import ProductCard from "@/components/Home/ProductCard";
+import Image from "next/image";
 
 const ProductDetails = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -22,7 +23,7 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
       <div className="w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-7 items-center gap-4">
         {/* Image */}
         <div className="col-span-3 mb-6 lg:mb-0">
-          <img
+          <Image
             src={singleProduct.image}
             alt={singleProduct.title}
             width={400}

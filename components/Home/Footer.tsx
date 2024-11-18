@@ -52,7 +52,7 @@ const Footer = () => {
 {/* CopyRight */}
       <div className='mt-8 grid grid-cols-1 sm:grid-cols-2 justify-between w-4/5  mx-auto'>
       <p> Copyright DakuTsuki 2024</p>
-      <Image src='/images/pay.svg' alt='pay' width={230} height={230}className='object-contain sm:ml-auto'/>'
+      <Image src='/images/pay.svg' alt='pay' width={230} height={230}className='object-contain sm:ml-auto'/>
       </div>
     </div>
   )
