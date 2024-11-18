@@ -24,7 +24,7 @@ const CardSideBar = ({ items }: Props) => {
       {/* If no card */}
       {items.length == 0 && (
         <div className="flex items-center w-full h-[80vh] flex-col justify-center">
-          <Image
+          <img
             src="/images/cart.svg"
             alt="empty_cart"
             width={200}

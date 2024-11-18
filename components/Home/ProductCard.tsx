@@ -28,7 +28,7 @@ const ProductCard = ({ products }: Props) => {
   return (
     <div className="p-4">
       <div className="w-[200px] h-[150px]">
-        <Image
+        <img
           src={products.image}
           alt={products.title}
           width={100}
