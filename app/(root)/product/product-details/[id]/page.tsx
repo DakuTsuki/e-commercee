@@ -6,19 +6,32 @@ import AddToCart from "./add-cart"; // Ensure consistent casing in component nam
 import ProductCard from "@/components/Home/ProductCard";
 import Image from "next/image";
 
-interface ProductDetailsProps {
-  params: {
-    id: string;
-  };
-}
+// Define the type for the component props
+type ProductDetailsProps = {
+  params: Promise<{ id: string }>; // params is a Promise
+};
 
+// Example usage of the type
+const productDetails: ProductDetailsProps = {
+  params: Promise.resolve({ id: "123" }), // Simulating a resolved Promise
+};
+
+// This is a page component that can be async
 const ProductDetails = async ({ params }: ProductDetailsProps) => {
-  const { id } = params;
-  console.log(id);
+  const resolvedParams = await params; // Wait for the Promise to resolve
+  const { id } = resolvedParams; // Now this correctly accesses the id property
 
-  // Fetch product details and related products
-  const singleProduct: Products = await getSingleFunction(id);
-  const relatedProducts: Products[] = await getProductByCategory(singleProduct.category);
+  let singleProduct: Products;
+  let relatedProducts: Products[] = [];
+
+  try {
+    // Fetch product details and related products
+    singleProduct = await getSingleFunction(id);
+    relatedProducts = await getProductByCategory(singleProduct.category);
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+    return <div>Error loading product details.</div>; // Handle error gracefully
+  }
 
   // Calculate the number of filled stars based on the rating
   const filledStarsCount = Math.round(singleProduct?.rating?.rate) || 0; // Default to 0 if undefined
@@ -30,7 +43,13 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
       <div className="w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-7 items-center gap-4">
         {/* Product Details Section */}
         <div className="lg:col-span-3">
-          <img src={singleProduct.image} alt={singleProduct.title} width={500} height={500} />
+          <Image 
+            src={singleProduct.image} 
+            alt={singleProduct.title} 
+            width={500} 
+            height={500} 
+            className="object-cover" // Optional: Control image display
+          />
           <h1 className="text-2xl font-bold">{singleProduct.title}</h1>
           <div className="flex items-center">
             {starArray.map((_, index) => (
