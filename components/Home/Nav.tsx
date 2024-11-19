@@ -4,7 +4,7 @@ import React from "react";
 import SearchBox from "../Helper/SearchBox";
 import ShoppingCartButton from "../Helper/ShoppingCartButton";
 import { HeartIcon, UserIcon } from "lucide-react";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Nav = () => {
   return (
@@ -22,16 +22,9 @@ const Nav = () => {
           <HeartIcon size={26} cursor={"pointer"} color="black" />
           <ShoppingCartButton />
 
-          {/* User Button */}
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-
-          <SignedOut>
-            <SignInButton>
+          
               <UserIcon size={26} cursor={"pointer"} color="black" />
-            </SignInButton>
-          </SignedOut>
+          
         </div>
       </div>
     </div>
