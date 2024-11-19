@@ -44,7 +44,7 @@ const CardSideBar = ({ items }: Props) => {
             >
               {/* Cart Image */}
               <div>
-                <Image
+                <img
                   src={item.image || "/path/to/default/image.jpg"} // Fallback image if item.image is not available
                   alt={item.title || "Default Title"} // Fallback alt text
                   width={60}

@@ -43,7 +43,7 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
       <div className="w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-7 items-center gap-4">
         {/* Product Details Section */}
         <div className="lg:col-span-3">
-          <Image 
+          <img
             src={singleProduct.image} 
             alt={singleProduct.title} 
             width={500} 
