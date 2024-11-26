@@ -77,7 +77,7 @@ const CardSideBar = ({ items }: Props) => {
             </div>
           ))}
 
-          <Link href="./cart">
+          <Link href="/cart">
             <SheetClose>
               <Button className="w-full mb-6 mt-6"> View All Cart</Button>
             </SheetClose>

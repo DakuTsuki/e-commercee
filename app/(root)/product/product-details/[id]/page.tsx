@@ -1,6 +1,6 @@
 import { getProductByCategory, getSingleFunction } from "@/Request/Request";
 import { Products } from "@/typing";
-import { Star } from "lucide-react";
+import { Star, StarIcon } from "lucide-react";
 import React from "react";
 import AddToCart from "./add-cart"; // Ensure consistent casing in component names
 import ProductCard from "@/components/Home/ProductCard";
@@ -42,31 +42,69 @@ const ProductDetails = async ({ params }: ProductDetailsProps) => {
       {/* Define a grid system */}
       <div className="w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-7 items-center gap-4">
         {/* Product Details Section */}
-        <div className="lg:col-span-3">
+        {/* image */}
+        <div className="col-span-3 mb-6 lg:mb-0">
           <img
-            src={singleProduct.image} 
-            alt={singleProduct.title} 
-            width={500} 
-            height={500} 
+            src={singleProduct.image}
+            alt={singleProduct.title}
+            width={500}
+            height={500}
             className="object-cover" // Optional: Control image display
           />
-          <h1 className="text-2xl font-bold">{singleProduct.title}</h1>
-          <div className="flex items-center">
-            {starArray.map((_, index) => (
-              <Star key={index} className="text-yellow-500" />
-            ))}
-            <span className="ml-2">{singleProduct.rating?.rate}</span>
-          </div>
-          <p className="mt-2">{singleProduct.description}</p>
-          <AddToCart />
         </div>
+        {/* Content */}
 
-        {/* Related Products Section */}
-        <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-          {relatedProducts.map((product) => (
-            <ProductCard key={product.id} products={product} />
-          ))}
+        <div className="col-span-4">
+          {/* Title */}
+          <h1 className="lg:text-3xl text-2xl font-bold text-black">
+            {singleProduct.title}
+          </h1>
+          {/* review */}
+          <div className="flex items-center mt-2 space-x-2">
+            <div className="flex items-center">
+              {starArray.map((star) => (
+                <StarIcon
+                  key={Math.random() * 1000}
+                  size={20}
+                  fill="yellow"
+                  className="text-yellow-500"
+                />
+              ))}
+            </div>
+          </div>
+          <p className="text-base text-gray-700 font-semibold">
+            ( {singleProduct.rating?.rate} Review)
+          </p>
+          {/* Line */}
+          <span className="w-1/4 h-[1.6px] bg-gray-400 rounded-lg block mt-4 opacity-20 mb-4"></span>
+          {/* Price */}
+          <h1 className="lg:text-6xl text-3xl md:text-4xl font-bold text-blue-950">
+            ${singleProduct?.price.toFixed(2)}
+          </h1>
+
+          {/* Description */}
+
+          <p className="mt-2">{singleProduct.description}</p>
+          {/* Extra info */}
+          <p className="mt-2 text-sm text-black text-opacity-70 font-semibold">
+            Category : {singleProduct?.category}
+          </p>
+          <p className="mt-2 text-sm text-black text-opacity-70 font-semibold">
+            Tag : Shop,WDW
+          </p>
+          <p className="mt-2 text-sm text-black text-opacity-70 font-semibold">
+            SKU : (Math.random() * 500)
+          </p>
+          {/* Addtocart */}
+          <AddToCart products={singleProduct} />
         </div>
+      </div>
+
+      {/* Related Products Section */}
+      <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+        {relatedProducts.map((product) => (
+          <ProductCard key={product.id} products={product} />
+        ))}
       </div>
     </div>
   );
