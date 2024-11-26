@@ -8,7 +8,7 @@ import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const page = () => {
+const Page = () => {
   // Get oir cart items
   const items = useSelector((state: RootState) => state.cart.items);
   // Calculating Total Quantity
@@ -123,4 +123,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
